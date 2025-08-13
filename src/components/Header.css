@@ -1,0 +1,23 @@
+
+header{
+    font-family: Hanken Grotesk;
+    font-weight: 500;
+    font-style: Medium;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+  margin-top: 20px;
+
+}
+header > h3{
+    color: #F9F4DA;
+    font-size: 20px;
+}
+
+header > p{
+    color: #8E8E8E;
+    font-size: 14px;
+    text-align: center;
+    max-width: 350px;
+}
