@@ -2,39 +2,49 @@
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
-  justify-content: center;  /* center horizontally */
-  align-items: center;      /* center vertically */
-  margin: 15px auto;        /* auto centers the container itself */
-  max-width: 300px;         /* optional: keeps them grouped nicely */
-  margin-top: 20px;
-
+  justify-content: center; 
+  align-items: center;     
+  margin-top: 15px;        
+  max-width: 300px;         
+  margin-bottom: 20px;
 }
 .language-box {
     padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     gap: 4.5px;
     angle: 0 deg;
     opacity: 1;
     border-radius: 3px;
     padding: 4.5px;
     height: 25px;
+    position: relative;
+    width: 66.75;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    justify-content: center;
-
-    font-family: Hanken Grotesk;
-    font-weight: 700;
-    font-style: Bold;
-    font-size: 12px;
-    leading-trim: NONE;
-    line-height: 100%;
-    letter-spacing: 0%;
-    text-align: center;
-
+    font-family: Hanken Grotesk, sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
+.language-text.faded {
+  filter: blur(1px);
+  opacity: 0.7;   
+}
+
+.language-box.faded {
+  filter: brightness(70%); 
+}
+
+.language-box .overlay-skull {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  pointer-events: none;
+  z-index: 2;
+}

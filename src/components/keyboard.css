@@ -6,7 +6,7 @@
   max-width: 480px;
   max-height: 136px;
   margin: 0 auto;
-  margin-top: 20px;
+  margin: 20px;
 }
 
 .key-box {
@@ -30,5 +30,5 @@
 }
 
 .key-box:active {
-  transform: scale(0.95); /* small press effect */
+  transform: scale(0.95); 
 }

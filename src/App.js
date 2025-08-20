@@ -1,18 +1,61 @@
 import './App.css';
-import Header from './components/Header'
-import Status from './components/Status'
+import { useState } from 'react';
+import Header from './components/Header';
+import Status from './components/Status';
 import Language from './components/language';
-import Keyboard  from './components/keyboard';
+import Keyboard from './components/keyboard';
 import Letters from './components/letters';
+import NewGame from './components/newgame';
+import Confetti from "react-confetti"
 
 function App() {
+  const [currentWord, setCurrentWord] = useState("REFACTOR");
+  const [pressedKeys, setPressedKeys] = useState([]);
+  const [wrongKeys, setWrongKeys] = useState([]);
+  const [correctKeys, setCorrectKeys] = useState([]);
+
+  function handleKeyPress(letter) {
+    if (wrongKeys.length >= 8 || correctKeys.length === new Set(currentWord).size) {
+      return; // stop if game already ended
+    }
+
+    // ✅ keep pressed keys unique
+    setPressedKeys(prev => (prev.includes(letter) ? prev : [...prev, letter]));
+
+    if (!currentWord.includes(letter)) {
+      // ✅ unique wrong keys
+      setWrongKeys(prev => (prev.includes(letter) ? prev : [...prev, letter]));
+    } else {
+      // ✅ unique correct keys
+      setCorrectKeys(prev => (prev.includes(letter) ? prev : [...prev, letter]));
+    }
+  }
+
+  function resetGame() {
+    setPressedKeys([]);
+    setWrongKeys([]);
+    setCorrectKeys([]);
+    setCurrentWord("REFACTOR"); 
+  }
+
   return (
     <div className="App">
-      <Header/>
-      <Status/>
-      <Language/>
-      <Letters/>
-      <Keyboard/>
+      {((correctKeys.length === new Set(currentWord).size) && (
+        <Confetti/>
+      ))}
+      <Header />
+      <Status correctKeys={correctKeys} wrongKeys={wrongKeys} currentWord={currentWord} />
+      <Language wrongKeys={wrongKeys} />
+      <Letters pressedKeys={pressedKeys} currentWord={currentWord} wrongKeys={wrongKeys} />
+      <Keyboard
+        onKeyPress={handleKeyPress}
+        pressedKeys={pressedKeys}
+        currentWord={currentWord}
+      />
+
+      {(correctKeys.length === new Set(currentWord).size || wrongKeys.length >= 8) && (
+        <NewGame onReset={resetGame} />
+      )}
     </div>
   );
 }

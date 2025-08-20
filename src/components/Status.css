@@ -10,10 +10,9 @@ section.game-status {
     letter-spacing: 0;
     text-align: center;
     color: #F9F4DA;
-    background-color: #10A95B;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* centers vertically */
+    justify-content: center; 
     align-items: center;
   margin-top: 20px;
 
@@ -21,11 +20,11 @@ section.game-status {
 
 section.game-status h3 {
     font-size: 20px;
-    margin:1px; /* remove default margin */
+    margin: 1px; 
 }
 
 section.game-status p {
     font-size: 16px;
-    margin: 1px; /* remove default margin */
+    margin: 1px; 
 }
 
