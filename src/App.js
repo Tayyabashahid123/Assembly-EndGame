@@ -1,5 +1,6 @@
 import './App.css';
 import { useState } from 'react';
+import { words } from './words';
 import Header from './components/Header';
 import Status from './components/Status';
 import Language from './components/language';
@@ -9,10 +10,17 @@ import NewGame from './components/newgame';
 import Confetti from "react-confetti"
 
 function App() {
-  const [currentWord, setCurrentWord] = useState("REFACTOR");
+
+
+  const getRandomWord = () => {
+    return words[Math.floor(Math.random() * words.length)].toUpperCase();
+  };
+  
+  const [currentWord, setCurrentWord] = useState(getRandomWord());
   const [pressedKeys, setPressedKeys] = useState([]);
   const [wrongKeys, setWrongKeys] = useState([]);
   const [correctKeys, setCorrectKeys] = useState([]);
+
 
   function handleKeyPress(letter) {
     if (wrongKeys.length >= 8 || correctKeys.length === new Set(currentWord).size) {
@@ -35,7 +43,7 @@ function App() {
     setPressedKeys([]);
     setWrongKeys([]);
     setCorrectKeys([]);
-    setCurrentWord("REFACTOR"); 
+    setCurrentWord(getRandomWord());
   }
 
   return (
